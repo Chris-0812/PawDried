@@ -1,6 +1,6 @@
 {
-  "name": "Cost Tracker",
-  "short_name": "CostTracker",
+  "name": "PawDried",
+  "short_name": "PayDried",
   "start_url": ".",
   "display": "standalone",
   "background_color": "#ffffff",
