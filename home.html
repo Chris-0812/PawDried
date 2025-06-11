@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Home - Cost Tracker PWA</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="style.css">
+  <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-auth.js"></script>
+  <script type="module" src="app.js"></script>
+</head>
+<body>
+  <div id="appSection">
+    <button id="logoutButton">Logout</button>
+    <h1>Cost Tracker</h1>
+    <form id="costForm">
+      <input type="date" id="date" required>
+      <input type="text" id="productID" placeholder="Product ID" required>
+      <input type="number" id="quantity" placeholder="Quantity" required>
+      <input type="text" id="unit" placeholder="Unit" required>
+      <input type="number" id="amount" placeholder="Amount" required>
+      <button type="submit">Add Entry</button>
+    </form>
+    <div id="history"></div>
+  </div>
+</body>
+</html>
