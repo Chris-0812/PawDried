@@ -53,3 +53,36 @@ if (currentPage.includes('home.html')) {
     }
   });
 }
+
+// Read and Update Google Sheet
+const API_URL = 'https://script.google.com/macros/s/AKfycbxebQHufvIgTnUZWDbC1ovfZq6aIwOrhM41jiwvsrPBQ9NDgbMCHKSY6L3vLScyw2gL/exec';
+
+// 🔽 Read data
+fetch(API_URL)
+  .then(res => res.json())
+  .then(data => {
+    console.log("Fetched data:", data);
+    // Display the data in your app
+  });
+
+// 🔼 Add data
+function addRow() {
+  const entry = {
+    date: document.getElementById('date').value,
+    category: document.getElementById('productID').value,
+    item: document.getElementById('unit').value,
+    quantity: document.getElementById('quantity').value,
+    unit: document.getElementById('unit').value,
+    amount: document.getElementById('amount').value
+  };
+
+  fetch(API_URL, {
+    method: 'POST',
+    body: JSON.stringify(entry),
+    headers: {
+      'Content-Type': 'application/json'
+    }
+  }).then(res => res.json()).then(data => {
+    console.log("Submitted:", data);
+  });
+}
