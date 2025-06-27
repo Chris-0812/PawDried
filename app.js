@@ -35,6 +35,7 @@ if (currentPage.includes('login.html')) {
 
       signInWithEmailAndPassword(auth, email, password)
         .then(() => {
+          console.log('Login successful');
           window.location.href = 'home.html';
         })
         .catch((error) => {
