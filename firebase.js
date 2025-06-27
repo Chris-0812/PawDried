@@ -3,12 +3,12 @@ import { getAuth } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-auth.
 
 // TODO: Replace with your Firebase config
 const firebaseConfig = {
-  apiKey: "AIzaSyDRHItVnalODZss-h1Ls2uI06YVazgIfUQ",
-  authDomain: "pawdried.firebaseapp.com",
-  projectId: "pawdried",
-  storageBucket: "pawdried.appspot.com",
-  messagingSenderId: "172753598874",
-  appId: "1:172753598874:web:d84b96219f510a61506223"
+  apiKey: "AIzaSyAushJhRtp7Y6M-uS2UxL3miqG0ksuTWQY",
+  authDomain: "pawdried-462702.firebaseapp.com",
+  projectId: "pawdried-462702",
+  storageBucket: "pawdried-462702.firebasestorage.app",
+  messagingSenderId: "603522630065",
+  appId: "1:603522630065:web:0961f13e24ca3780a77d90"
 };
 
 // Initialize Firebase
