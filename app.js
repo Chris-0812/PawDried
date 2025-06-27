@@ -65,7 +65,7 @@ if (currentPage.includes('home.html')) {
 
 
 // Read and Update Google Sheet
-const API_URL = 'https://script.google.com/macros/s/AKfycbzsRXSmIv-I0BamrueDVnn2gBuvxBq4Uf_nlZB5P487k2ezDgmJ0LgSD2XDciYPYH7k/exec';
+const API_URL = 'https://script.google.com/macros/s/AKfycbx5qru2NLKNXNxm98UPV24c3TUZI3BetI4-_3ObExtCBsdobc_E3xAOxqhfEHs8-zoh/exec';
 
 // 🔽 Read data
 fetch(API_URL)
