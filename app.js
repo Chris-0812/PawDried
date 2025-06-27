@@ -71,8 +71,8 @@ const API_URL = 'https://script.google.com/macros/s/AKfycbx5qru2NLKNXNxm98UPV24c
 fetch(API_URL)
   .then(res => res.json())
   .then(data => {
-    console.log('Fetched records:', data);
-    // display on page
+    console.log('Fetched records:', data),
+    mode: 'no-cors';
   });
 
 
