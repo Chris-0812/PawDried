@@ -65,16 +65,13 @@ if (currentPage.includes('home.html')) {
 
 
 // Read and Update Google Sheet
-const API_URL = 'https://script.google.com/macros/s/AKfycbx5qru2NLKNXNxm98UPV24c3TUZI3BetI4-_3ObExtCBsdobc_E3xAOxqhfEHs8-zoh/exec';
-
 // 🔽 Read data
-fetch(API_URL)
+fetch("https://script.google.com/macros/s/AKfycbx5qru2NLKNXNxm98UPV24c3TUZI3BetI4-_3ObExtCBsdobc_E3xAOxqhfEHs8-zoh/exec")
   .then(res => res.json())
   .then(data => {
-    console.log('Fetched records:', data),
-    mode: 'no-cors';
-  });
-
+    console.log("Fetched data:", data);
+  })
+  .catch(err => console.error("Fetch error:", err));
 
 // 🔼 Add data
 function addRow() {
