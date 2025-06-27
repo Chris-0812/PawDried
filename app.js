@@ -1,10 +1,6 @@
 // app.js
-import { auth } from './firebase.js';
-import {
-  signInWithEmailAndPassword,
-  signOut,
-  onAuthStateChanged
-} from "https://www.gstatic.com/firebasejs/9.6.1/firebase-auth.js";
+import { getAuth, signInWithEmailAndPassword, signOut, onAuthStateChanged } from "firebase/auth";
+const auth = getAuth();
 
 const currentPage = window.location.pathname;
 
