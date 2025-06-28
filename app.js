@@ -84,6 +84,7 @@ fetch(API_URL + '?type=product')
       option.textContent = `${product['Product ID']} - ${product['Product Name']}`;
       option.dataset.unit = product['Unit']; // 👈 Store unit for autofill
       dropdown.appendChild(option);
+      console.log(data);
 
       // Optional: store in map if needed later
       productMap[product['Product ID']] = product;
