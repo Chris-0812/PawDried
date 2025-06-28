@@ -75,7 +75,7 @@ const historyDiv = document.getElementById('history');
 let productMap = {};
 
 // 📦 Fetch product list and populate dropdown
-fetch("https://script.google.com/macros/s/AKfycbx5qru2NLKNXNxm98UPV24c3TUZI3BetI4-_3ObExtCBsdobc_E3xAOxqhfEHs8-zoh/exec" + '?type=product')
+fetch(API_URL + '?type=product')
   .then(res => res.json())
   .then(data => {
     data.forEach(product => {
