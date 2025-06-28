@@ -99,6 +99,8 @@ input.addEventListener('change', () => {
 
 
 // ➕ Add row to Google Sheet
+const form = document.getElementById('costForm');
+
 form.addEventListener('submit', function (e) {
   e.preventDefault();
 
