@@ -117,6 +117,8 @@ form.addEventListener('submit', function (e) {
     amount: parseFloat(document.getElementById('amount').value)
   };
 
+  console.log(entry);
+
   fetch(API_URL, {
     method: 'POST',
     body: JSON.stringify(entry),
