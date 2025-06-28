@@ -127,7 +127,7 @@ form.addEventListener('submit', function (e) {
   .then(res => res.json())
   .then(data => console.log('Response:', data))
   .catch(err => console.error('Error:', err));
-}
+})
 
 
 
