@@ -64,23 +64,43 @@ if (currentPage.includes('home.html')) {
 }
 
 
-// Read and Update Google Sheet
-// 🔽 Read data
-fetch("https://script.google.com/macros/s/AKfycbx5qru2NLKNXNxm98UPV24c3TUZI3BetI4-_3ObExtCBsdobc_E3xAOxqhfEHs8-zoh/exec")
+// 🔗 Google Apps Script Web App URL
+const API_URL = "https://script.google.com/macros/s/AKfycbx5qru2NLKNXNxm98UPV24c3TUZI3BetI4-_3ObExtCBsdobc_E3xAOxqhfEHs8-zoh/exec";
+
+// 📌 DOM elements
+const dropdown = document.getElementById('productID');
+const unitInput = document.getElementById('unit');
+const form = document.getElementById('costForm');
+const historyDiv = document.getElementById('history');
+let productMap = {};
+
+// 📦 Fetch product list and populate dropdown
+fetch(API_URL + '?type=product')
   .then(res => res.json())
   .then(data => {
-    const dropdown = document.getElementById('productID');
     data.forEach(product => {
       const option = document.createElement('option');
-      option.value = product["Product ID"];  // Adjust to your column header
-      option.textContent = `${product["Product Name"]} (${product["Product ID"]})`;
-      option.dataset.unit = product["Unit"];
+      option.value = product['Product ID'];
+      option.textContent = `${product['Product ID']} - ${product['Product Name']}`;
+      option.dataset.unit = product['Unit']; // 👈 Store unit for autofill
       dropdown.appendChild(option);
+
+      // Optional: store in map if needed later
+      productMap[product['Product ID']] = product;
     });
   });
 
-// 🔼 Add data
-function addRow() {
+// 🔄 Auto-fill unit when selecting a product
+dropdown.addEventListener('change', function () {
+  const selectedOption = this.options[this.selectedIndex];
+  const unit = selectedOption.dataset.unit;
+  unitInput.value = unit || '';
+});
+
+// ➕ Add row to Google Sheet
+form.addEventListener('submit', function (e) {
+  e.preventDefault();
+
   const entry = {
     date: document.getElementById('date').value,
     productId: document.getElementById('productID').value,
@@ -100,14 +120,9 @@ function addRow() {
   .then(data => {
     console.log("Submitted:", data);
     alert("Entry submitted successfully!");
+    form.reset(); // Clear form
   });
-}
-
-// auto fill the unit
-document.getElementById('productID').addEventListener('change', function () {
-  const selectedOption = this.options[this.selectedIndex];
-  const unit = selectedOption.dataset.unit;
-  document.getElementById('unit').value = unit || '';
 });
+
 
 
