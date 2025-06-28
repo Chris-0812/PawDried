@@ -83,10 +83,10 @@ fetch(API_URL + '?type=product')
       const option = document.createElement('option');
       option.value = product['Product Name']; // <-- Adjust to match your sheet
       datalist.appendChild(option);
+      console.log("Product List:", data); // Make sure "Unit" is there
 
       // Save unit by product name
       productMap[product['Product Name']] = product['Unit']; // <-- Match your sheet headers
-      };
     });
   })
   .catch(err => {
