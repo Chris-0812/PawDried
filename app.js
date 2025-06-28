@@ -121,22 +121,13 @@ form.addEventListener('submit', function (e) {
 
   fetch(API_URL, {
     method: 'POST',
-    body: JSON.stringify(entry),
-    headers: {
-      'Content-Type': 'application/json'
-    }
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ test: 'Hello Google Apps Script!' })
   })
   .then(res => res.json())
-  .then(data => {
-    console.log("Submitted:", data);
-    alert("Entry submitted successfully!");
-    form.reset(); // optional: clears the form
-  })
-  .catch(err => {
-    console.error("Submit failed:", err);
-    alert("Failed to submit data");
-  });
-});
+  .then(data => console.log('Response:', data))
+  .catch(err => console.error('Error:', err));
+
 
 
 
