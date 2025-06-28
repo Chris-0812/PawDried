@@ -114,7 +114,6 @@ form.addEventListener('submit', function (e) {
     date: document.getElementById('date').value,
     productId: selected.id || name, // fallback to name if mapping fails
     quantity: parseFloat(document.getElementById('quantity').value),
-    unit: selected.unit || '',
     amount: parseFloat(document.getElementById('amount').value)
   };
 
