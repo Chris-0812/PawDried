@@ -11,12 +11,9 @@
     <h1>Cost Tracker</h1>
     <form id="costForm">
       <input type="date" id="date" required>
-      <input type="text" id="productID" placeholder="Product ID" required>
-
-      <select id="productID" required>
-        <option value="">Select Product</option>
-      </select>
-      
+      <input list="productList" id="productID" placeholder="Product Name" required>
+      <datalist id="productList"></datalist>
+      <input type="text" id="unit" placeholder="Unit" readonly>
       <input type="number" id="quantity" placeholder="Quantity" required>
       <input type="text" id="unit" placeholder="Unit" required>
       <input type="number" id="amount" placeholder="Amount" required>
