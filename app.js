@@ -85,9 +85,7 @@ fetch(API_URL + '?type=product')
       datalist.appendChild(option);
 
       // Save unit by product name
-      productMap[product['Product Name']] = {
-        id: product['Product ID'],
-        unit: product['Unit']
+      productMap[product['Product Name']] = product['Unit']; // <-- Match your sheet headers
       };
     });
   })
