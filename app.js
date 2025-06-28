@@ -75,7 +75,7 @@ const historyDiv = document.getElementById('history');
 let productMap = {};
 
 // 📦 Fetch product list and populate dropdown
-fetch(API_URL + '?type=product')
+fetch("https://script.google.com/macros/s/AKfycbx5qru2NLKNXNxm98UPV24c3TUZI3BetI4-_3ObExtCBsdobc_E3xAOxqhfEHs8-zoh/exec" + '?type=product')
   .then(res => res.json())
   .then(data => {
     data.forEach(product => {
@@ -84,7 +84,7 @@ fetch(API_URL + '?type=product')
       option.textContent = `${product['Product ID']} - ${product['Product Name']}`;
       option.dataset.unit = product['Unit']; // 👈 Store unit for autofill
       dropdown.appendChild(option);
-      console.log(data);
+      console.log("Fetched product list:", data);
 
       // Optional: store in map if needed later
       productMap[product['Product ID']] = product;
