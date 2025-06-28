@@ -123,7 +123,11 @@ form.addEventListener('submit', function (e) {
   .then(data => {
     console.log("Submitted:", data);
     alert("Entry submitted successfully!");
-    form.reset(); // Clear form
+    form.reset(); // optional: clears the form
+  })
+  .catch(err => {
+    console.error("Submit failed:", err);
+    alert("Failed to submit data");
   });
 });
 
