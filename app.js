@@ -68,10 +68,10 @@ if (currentPage.includes('home.html')) {
 const API_URL = "https://script.google.com/macros/s/AKfycbx5qru2NLKNXNxm98UPV24c3TUZI3BetI4-_3ObExtCBsdobc_E3xAOxqhfEHs8-zoh/exec";
 
 // 📌 DOM elements
-const dropdown = document.getElementById('productID');
+const datalist = document.getElementById('productList');
+const input = document.getElementById('productID');
 const unitInput = document.getElementById('unit');
-const form = document.getElementById('costForm');
-const historyDiv = document.getElementById('history');
+
 let productMap = {};
 
 // Fetch product list and populate datalist
