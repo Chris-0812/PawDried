@@ -69,9 +69,15 @@ if (currentPage.includes('home.html')) {
 fetch("https://script.google.com/macros/s/AKfycbx5qru2NLKNXNxm98UPV24c3TUZI3BetI4-_3ObExtCBsdobc_E3xAOxqhfEHs8-zoh/exec")
   .then(res => res.json())
   .then(data => {
-    console.log("Fetched data:", data);
-  })
-  .catch(err => console.error("Fetch error:", err));
+    const dropdown = document.getElementById('productID');
+    data.forEach(product => {
+      const option = document.createElement('option');
+      option.value = product["Product ID"];  // Adjust to your column header
+      option.textContent = `${product["Product Name"]} (${product["Product ID"]})`;
+      option.dataset.unit = product["Unit"];
+      dropdown.appendChild(option);
+    });
+  });
 
 // 🔼 Add data
 function addRow() {
@@ -96,4 +102,12 @@ function addRow() {
     alert("Entry submitted successfully!");
   });
 }
+
+// auto fill the unit
+document.getElementById('productID').addEventListener('change', function () {
+  const selectedOption = this.options[this.selectedIndex];
+  const unit = selectedOption.dataset.unit;
+  document.getElementById('unit').value = unit || '';
+});
+
 
