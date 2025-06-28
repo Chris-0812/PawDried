@@ -74,28 +74,27 @@ const form = document.getElementById('costForm');
 const historyDiv = document.getElementById('history');
 let productMap = {};
 
-// 📦 Fetch product list and populate dropdown
+// Fetch product list and populate datalist
 fetch(API_URL + '?type=product')
   .then(res => res.json())
-  .then(data => {
-    data.forEach(product => {
+  .then(products => {
+    products.forEach(product => {
       const option = document.createElement('option');
-      option.value = product['Product ID'];
-      option.textContent = `${product['Product ID']} - ${product['Product Name']}`;
-      option.dataset.unit = product['Unit']; // 👈 Store unit for autofill
-      dropdown.appendChild(option);
-      console.log("Fetched product list:", data);
+      option.value = product['Product Name']; // <-- Adjust to match your sheet
+      datalist.appendChild(option);
 
-      // Optional: store in map if needed later
-      productMap[product['Product ID']] = product;
+      // Save unit by product name
+      productMap[product['Product Name']] = product['Unit']; // <-- Match your sheet headers
     });
+  })
+  .catch(err => {
+    console.error("Failed to fetch product list:", err);
   });
 
-// 🔄 Auto-fill unit when selecting a product
-dropdown.addEventListener('change', function () {
-  const selectedOption = this.options[this.selectedIndex];
-  const unit = selectedOption.dataset.unit;
-  unitInput.value = unit || '';
+// Auto-fill unit when a product is selected
+input.addEventListener('change', () => {
+  const selectedProduct = input.value;
+  unitInput.value = productMap[selectedProduct] || '';
 });
 
 // ➕ Add row to Google Sheet
