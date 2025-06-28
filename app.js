@@ -71,9 +71,8 @@ const API_URL = "https://script.google.com/macros/s/AKfycbx5qru2NLKNXNxm98UPV24c
 const datalist = document.getElementById('productList');
 const input = document.getElementById('productID');
 const unitInput = document.getElementById('unit');
-const form = document.getElementById('costForm');
 
-let productMap = {};
+let productMap = {}; // name -> unit
 
 // Fetch product list and populate datalist
 fetch(API_URL + '?type=product')
@@ -83,7 +82,6 @@ fetch(API_URL + '?type=product')
       const option = document.createElement('option');
       option.value = product['Product Name']; // <-- Adjust to match your sheet
       datalist.appendChild(option);
-      console.log("Product List:", data); // Make sure "Unit" is there
 
       // Save unit by product name
       productMap[product['Product Name']] = product['Unit']; // <-- Match your sheet headers
@@ -98,6 +96,7 @@ input.addEventListener('change', () => {
   const selectedProduct = input.value;
   unitInput.value = productMap[selectedProduct] || '';
 });
+
 
 // ➕ Add row to Google Sheet
 form.addEventListener('submit', function (e) {
