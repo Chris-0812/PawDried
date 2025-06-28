@@ -71,6 +71,7 @@ const API_URL = "https://script.google.com/macros/s/AKfycbx5qru2NLKNXNxm98UPV24c
 const datalist = document.getElementById('productList');
 const input = document.getElementById('productID');
 const unitInput = document.getElementById('unit');
+const form = document.getElementById('costForm');
 
 let productMap = {};
 
@@ -84,7 +85,10 @@ fetch(API_URL + '?type=product')
       datalist.appendChild(option);
 
       // Save unit by product name
-      productMap[product['Product Name']] = product['Unit']; // <-- Match your sheet headers
+      productMap[product['Product Name']] = {
+        id: product['Product ID'],
+        unit: product['Unit']
+      };
     });
   })
   .catch(err => {
@@ -105,7 +109,6 @@ form.addEventListener('submit', function (e) {
     date: document.getElementById('date').value,
     productId: document.getElementById('productID').value,
     quantity: parseFloat(document.getElementById('quantity').value),
-    unit: document.getElementById('unit').value,
     amount: parseFloat(document.getElementById('amount').value)
   };
 
