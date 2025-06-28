@@ -79,12 +79,16 @@ fetch(API_URL + '?type=product')
   .then(res => res.json())
   .then(products => {
     products.forEach(product => {
+      const name = product['Product Name'];
+      const id = product['Product ID'];
+      const unit = product['Unit'];
+      
       const option = document.createElement('option');
       option.value = product['Product Name']; // <-- Adjust to match your sheet
       datalist.appendChild(option);
 
       // Save unit by product name
-      productMap[product['Product Name']] = product['Unit']; // <-- Match your sheet headers
+      productMap[name] = { id, unit }; // <-- Match your sheet headers
     });
   })
   .catch(err => {
@@ -92,11 +96,10 @@ fetch(API_URL + '?type=product')
   });
 
 // Auto-fill unit when a product is selected
-input.addEventListener('change', () => {
-  const selectedProduct = input.value;
-  unitInput.value = productMap[selectedProduct] || '';
+document.getElementById('productID').addEventListener('change', function () {
+  const selected = productMap[this.value];
+  document.getElementById('unit').value = selected ? selected.unit : '';
 });
-
 
 // ➕ Add row to Google Sheet
 const form = document.getElementById('costForm');
@@ -104,10 +107,14 @@ const form = document.getElementById('costForm');
 form.addEventListener('submit', function (e) {
   e.preventDefault();
 
+  const name = document.getElementById('productID').value;
+  const selected = productMap[name] || {};
+  
   const entry = {
     date: document.getElementById('date').value,
-    productId: document.getElementById('productID').value,
+    productId: selected.id || name, // fallback to name if mapping fails
     quantity: parseFloat(document.getElementById('quantity').value),
+    unit: selected.unit || '',
     amount: parseFloat(document.getElementById('amount').value)
   };
 
